@@ -32,7 +32,7 @@ function Footer(){
    <div><h4>Contact</h4><a href="mailto:techziouz@gmail.com">techziouz@gmail.com</a><a href="https://wa.me/918111838258" target="_blank">+91 8111838258</a><p>KV Shopping Centre, Arangottukara, Palakkad, Kerala, India - 679532</p></div>
  </div><div className="container copyright">© 2026 TechZiouz. Technology. Skills. Opportunities.</div></footer>
 }
-function Layout({children}){return <><Header/><main>{children}</main><a className="wa" href="https://wa.me/918111838258" target="_blank">W</a><Footer/></>}
+function Layout({children}){return <><Header/><main>{children}</main><a className="wa" href="https://wa.me/918111838258" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp"><i className="fab fa-whatsapp"></i></a><Footer/></>}
 
 function Hero(){
  return <section className="hero"><video className="heroVideo" autoPlay muted loop playsInline poster="/assets/techziouz-hero-poster.jpg"><source src="/assets/techziouz-hero.mp4" type="video/mp4"/></video><div className="heroShade"/><div className="container heroContent">
