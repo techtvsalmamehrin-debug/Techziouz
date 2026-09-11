@@ -14,7 +14,7 @@ const services = [
 
 function Header(){
  const [open,setOpen]=useState(false);
- const nav=[["/","Home"],["/services","Services"],["/student-support","Student Support"],["/training","Training"],["/projects","Projects"],["/career","Career"],["/about","About"]];
+ const nav=[["/","Home"],["/services","Services"],["/student-support","Student Support"],["/training","Training"],["/projects","Projects"],["/career","Career"],["/about","About"],["/blog","Blog"]];
  return <header className="header"><div className="container nav">
    <Link to="/" className="brand"><img src="/assets/techziouz-logo.png" alt="TechZiouz"/></Link>
    <button className="menu" onClick={()=>setOpen(!open)} aria-label="Menu">☰</button>
@@ -62,6 +62,48 @@ function PracticalLabs(){return <StandardPage eyebrow="PRACTICAL COMPUTER LABS" 
 ].map(([t,p],i)=><div className="labBox" key={t}><span>0{i+1}</span><h2>{t}</h2><p>{p}</p><Link className="more" to="/contact">Request Lab Support →</Link></div>)}</div></section></StandardPage>}
 function Generic({title,eyebrow,items,intro}){return <StandardPage eyebrow={eyebrow} title={title} intro={intro}><section className="section"><div className="container contentGrid">{items.map((x,i)=><div className="feature" key={x}><span>0{i+1}</span><h3>{x}</h3><p>Structured guidance, practical exercises and focused support designed around your current level and goals.</p></div>)}</div></section><CTA/></StandardPage>}
 function About(){return <Generic eyebrow="ABOUT TECHZIOUZ" title="Technology that helps people move forward." intro="TechZiouz bridges academic learning, practical skills and real-world opportunities through technology, structured guidance and personalized support." items={["Practical learning","Personalized support","Student-centric guidance","Skill-focused development","Career readiness","Technology-driven solutions"]}/>}
+function BlogPage(){
+ const posts=[
+  {category:"Student Support", title:"How to prepare for practical lab exams with confidence", date:"Aug 20, 2026", excerpt:"A simple way to approach labs, debug faster, and turn practice into confidence before your viva and exam."},
+  {category:"Career Growth", title:"From classroom knowledge to job-ready skills", date:"Sep 02, 2026", excerpt:"Learn what employers look for beyond theory and how to build a stronger technical profile step by step."},
+  {category:"AI & Tools", title:"Practical AI habits that help students and professionals work smarter", date:"Sep 08, 2026", excerpt:"Explore how AI tools can support learning, productivity and structured workflows without replacing real understanding."},
+  {category:"Coding", title:"The best way to practice programming consistently", date:"Sep 11, 2026", excerpt:"Focus on short, outcome-driven coding practice that improves confidence, clarity and debugging speed."}
+ ];
+ return (
+  <>
+   <div className="pageHero blogHero">
+    <div className="container">
+     <div className="eyebrow">BLOG</div>
+     <h1>Insights for learning, growth and real-world readiness.</h1>
+     <p>Practical ideas, student guidance and technology-focused stories to help you move forward with clarity.</p>
+    </div>
+   </div>
+   <section className="section">
+    <div className="container blogLayout">
+     <div className="blogFeature">
+      <span className="blogBadge">Featured Article</span>
+      <h2>Building a stronger tech foundation beyond classroom theory</h2>
+      <p>Many learners complete courses with knowledge but still feel uncertain when it comes to real-world tasks. This article explains how structured practice, supported guidance and consistent steps can bridge the gap between learning and confidence.</p>
+      <Link className="more" to="/contact">Ask for guidance →</Link>
+     </div>
+     <div className="blogGrid">
+      {posts.map(post => (
+       <article className="blogCard" key={post.title}>
+        <div className="blogMeta">
+         <span>{post.category}</span>
+         <small>{post.date}</small>
+        </div>
+        <h3>{post.title}</h3>
+        <p>{post.excerpt}</p>
+        <Link to="/contact" className="more">Read more →</Link>
+       </article>
+      ))}
+     </div>
+    </div>
+   </section>
+  </>
+ );
+}
 function Contact(){return <StandardPage eyebrow="GET SUPPORT" title="Let's build your next step." intro="Tell us what you need help with and connect with TechZiouz."><section className="section"><div className="container contactGrid"><div><h2>Contact TechZiouz</h2><p>Email: <a href="mailto:techziouz@gmail.com">techziouz@gmail.com</a></p><p>Phone / WhatsApp: <a href="https://wa.me/919446328258" target="_blank">+91 9446328258</a></p><p>KV Shopping Centre, Arangottukara, Arangottukara (PO), Palakkad, Kerala, India - 679532</p><p><a href="https://wa.me/919446328258" target="_blank">Chat on WhatsApp →</a></p></div><form onSubmit={e=>{e.preventDefault();window.open("https://wa.me/919446328258?text="+encodeURIComponent("Hello TechZiouz, I would like to enquire about your services."),"_blank")}}><input placeholder="Full Name" required/><input placeholder="Phone / WhatsApp" required/><select><option>Student Support</option><option>Training</option><option>Practical Lab</option><option>Project Support</option><option>Career Support</option><option>AI & Digital Solutions</option></select><textarea placeholder="Tell us about your requirement"></textarea><button className="btn red">Submit Enquiry</button></form></div></section></StandardPage>}
 
 function App(){
@@ -73,7 +115,7 @@ function App(){
    <Route path="/training" element={<Generic eyebrow="TRAINING & SKILL DEVELOPMENT" title="Build skills that go beyond the classroom." intro="Practical technology training for students, graduates and professionals." items={["C / C++","Python","Java","SQL","Python Full Stack","Django","Git & GitHub","AI Tools"]}/>}/>
    <Route path="/projects" element={<Generic eyebrow="PROJECT SUPPORT" title="Build with understanding. Present with confidence." intro="Guidance from idea selection through development, documentation, demo and viva." items={["Mini Projects","Major Projects","Final Year Projects","Documentation","PPT / Presentation","Demo & Viva"]}/>}/>
    <Route path="/career" element={<Generic eyebrow="CAREER SUPPORT" title="From skills to career readiness." intro="Build a stronger professional profile and prepare for your next opportunity." items={["ATS Resume","LinkedIn","GitHub","Portfolio","Technical Interview","Mock Interview","Placement Preparation","Skill Assessment"]}/>}/>
-   <Route path="/about" element={<About/>}/><Route path="/contact" element={<Contact/>}/>
+   <Route path="/about" element={<About/>}/><Route path="/blog" element={<BlogPage/>}/><Route path="/contact" element={<Contact/>}/>
  </Routes></Layout>
 }
 createRoot(document.getElementById("root")).render(<BrowserRouter><App/></BrowserRouter>);
