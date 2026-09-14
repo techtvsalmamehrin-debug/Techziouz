@@ -29,6 +29,12 @@
     <lastmod>2024-06-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-
+    <url>
+      <loc>https://techziouz.com/blog/post1</loc>
+      <lastmod>2024-06-20</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
   <!-- Add more URLs as needed -->
 </urlset>
