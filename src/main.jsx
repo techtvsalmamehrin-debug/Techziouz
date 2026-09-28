@@ -186,7 +186,7 @@ function Contact(){
       <option>AI & Digital Solutions</option>
      </optgroup>
     </select>
-    <textarea name="requirement" placeholder="Tell us about your requirement"></textarea>
+    <textarea name="requirement" placeholder="Tell us about your requirement (max 100 characters)" maxLength={100} required></textarea>
     <button className="btn red" type="submit">Submit Enquiry</button>
    </form>
   </div></section>
