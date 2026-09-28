@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
 import "./programs.css";
 import "./kidziouz.css";
@@ -11,25 +11,6 @@ const tracks = [
  {id:"career-skill-programs",title:"Career Skill Programs",audience:"Graduates & Job Seekers",description:"Develop job-ready technology skills, portfolio work and interview confidence.",icon:"fa-briefcase",areas:["Python & Django","Full stack development","APIs & automation","Career support"],cta:"Explore Career Programs"},
  {id:"kidziouz",title:"Kidziouz",audience:"Young learners",description:"A friendly, creative technology learning identity for curious young minds.",icon:"fa-shapes",areas:["Coding for kids","Robotics & electronics","Creative projects","Vacation camps"],path:"/programs/kidziouz",cta:"Explore Kidziouz"}
 ];
-
-function PageMetadata({title,description,path}){
- useEffect(()=>{
-  const titleNode=document.title;
-  const descriptionNode=document.querySelector('meta[name="description"]');
-  const canonicalNode=document.querySelector('link[rel="canonical"]');
-  const oldDescription=descriptionNode?.content;
-  const oldCanonical=canonicalNode?.href;
-  document.title=title;
-  if(descriptionNode) descriptionNode.content=description;
-  if(canonicalNode) canonicalNode.href=`https://techziouz.com${path}`;
-  return ()=>{
-   document.title=titleNode;
-   if(descriptionNode&&oldDescription) descriptionNode.content=oldDescription;
-   if(canonicalNode&&oldCanonical) canonicalNode.href=oldCanonical;
-  };
- },[title,description,path]);
- return null;
-}
 
 function ProgramCard({track,index}){
  return <article className={`programCard${track.id==="kidziouz"?" kidziouzCard":""}`}>
@@ -63,7 +44,6 @@ const careerGroups=[["Technical skills",["Python Development","Python Django","F
 
 export function Programs(){
  return <>
-  <PageMetadata title="TechZiouz Programs | Technology Training for Students & Graduates" description="Explore TechZiouz technology programs for school students, B.Tech, Diploma, Degree students, graduates and job seekers. Learn programming, web development, robotics, AI, project development and career skills." path="/programs"/>
   <section className="programHero"><div className="container"><div className="eyebrow">TECHZIOUZ PROGRAMS</div><h1>Technology Programs for Every Learning Stage</h1><p>From young learners to college students and graduates - learn practical technology skills, build projects and prepare for the future.</p><strong className="programMotto">LEARN <i>•</i> PRACTICE <i>•</i> BUILD <i>•</i> GROW</strong><div className="programHeroActions"><a className="btn red" href="#program-cards">Explore Programs</a><Link className="btn programOutline" to="/contact">Get Started</Link></div></div></section>
   <section className="programOverview" id="program-cards"><div className="container"><div className="programSectionIntro"><div><div className="eyebrow">FIND YOUR STARTING POINT</div><h2>Programs for every next step.</h2></div><p>Explore practical learning paths shaped around different ages, study stages and career goals.</p></div><div className="programCards">{tracks.map((track,index)=><ProgramCard key={track.id} track={track} index={index}/>)}</div></div></section>
   <section className="programDetails"><div className="container">
@@ -104,7 +84,6 @@ const kidziouzPaths=[
 
 export function Kidziouz(){
  return <>
-  <PageMetadata title="Kidziouz by TechZiouz | A Tech Learning Space for Young Minds" description="Discover Kidziouz by TechZiouz, a technology learning space for young minds covering digital skills, coding, Scratch, Python, Arduino, robotics and creative projects." path="/programs/kidziouz"/>
   <section className="kidziouzHero"><div className="container kidziouzHeroInner"><div className="kidziouzHeroCopy"><div className="kidziouzLabel">KIDZIOUZ <span>BY TECHZIOUZ</span></div><h1>A Tech Learning Space for Young Minds</h1><p>Curiosity becomes confidence through creative, hands-on technology learning.</p><Link className="btn kidziouzButton" to="/contact">Explore Kidziouz <span aria-hidden="true">→</span></Link><div className="kidziouzHeroMarks"><span>CREATE</span><span>EXPERIMENT</span><span>DISCOVER</span></div></div><div className="kidziouzHeroArt" aria-hidden="true"><div className="kidziouzHeroArtGrid"/><div className="kidziouzHeroRobot"><i className="fas fa-robot"/></div><span className="kidziouzHeroSticker kidziouzStickerCode"><i className="fas fa-code"/> CODE</span><span className="kidziouzHeroSticker kidziouzStickerBuild"><i className="fas fa-cubes"/> BUILD</span><span className="kidziouzHeroSticker kidziouzStickerIdeas"><i className="fas fa-lightbulb"/> IDEAS</span></div></div></section>
   <section className="kidziouzAreas"><div className="container"><div className="programSectionIntro"><div><div className="eyebrow">EXPLORE TECHNOLOGY</div><h2>Learning made for curious minds.</h2></div><p>Build digital confidence through guided exploration, age-aware learning paths and creative projects.</p></div><div className="kidziouzAreaGrid">{["Computer Basics","Digital Literacy","Coding for Kids","Scratch","Python Basics","Arduino Basics","Electronics","Robotics","Logical Thinking","Problem Solving","AI Awareness","Digital Skills","Creative Technology Projects","Vacation Technology Camps"].map((item,index)=><div key={item}><span>0{index+1}</span><h3>{item}</h3></div>)}</div></div></section>
   <section className="kidziouzLevels"><div className="container"><div className="eyebrow">LEARNING PATHS</div><h2>Start at the right level.</h2><div className="kidziouzLevelGrid">{kidziouzPaths.map((path,index)=><article className="kidziouzLevel" key={path.level}><span>{path.level}</span><h3>{path.title}</h3><p>{path.audience}</p><ul>{path.focus.map(item=><li key={item}>{item}</li>)}</ul><Link to="/contact" className="programLink">Enquire about this path <span aria-hidden="true">→</span></Link></article>)}</div></div></section>

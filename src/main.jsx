@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {createRoot} from "react-dom/client";
 import {BrowserRouter, Routes, Route, Link, NavLink, useLocation} from "react-router-dom";
 import "./styles.css";
@@ -12,8 +12,59 @@ const services = [
  {path:"/services/career", title:"Career Support", text:"Build a stronger professional profile and prepare for your next opportunity.", items:["ATS Resume","LinkedIn","GitHub","Portfolio","Mock Interviews","Placement Preparation"]},
  {path:"/services/ai-digital", title:"AI & Digital Solutions", text:"Practical AI, automation and digital solutions for professionals and businesses.", items:["AI Chatbots","AI Automation","Workflow Automation","Excel Automation","Digital Solutions"]}
 ];
+const pageMetadata = {
+ "/": {title:"TechZiouz | Your Trusted Technology Partner",description:"Build practical technology skills with TechZiouz. Explore student support, technology training, project guidance, career preparation and digital solutions in Kerala.",keywords:"TechZiouz, technology training, student support, project guidance, career preparation, Kerala"},
+ "/services": {title:"Technology Services | TechZiouz",description:"Explore TechZiouz services for student support, practical labs, technical training, project guidance, career support and AI-enabled digital solutions.",keywords:"TechZiouz services, student support, programming training, practical labs, project guidance, career support"},
+ "/services/student-support": {title:"Academic Student Support Service | TechZiouz",description:"Get programming, lab, viva and exam guidance through TechZiouz academic student support.",keywords:"academic student support, programming guidance, lab preparation, viva support, TechZiouz"},
+ "/services/practical-labs": {title:"Practical Computer Labs | TechZiouz",description:"Prepare for Plus One, Plus Two and degree computer practicals with programming practice, debugging, lab preparation and viva support.",keywords:"computer practical labs, programming lab support, Plus One, Plus Two, degree practicals, TechZiouz"},
+ "/student-support": {title:"Student Technology Support | TechZiouz",description:"Get structured programming, lab, exam, supplementary and viva support for your academic technology journey with TechZiouz.",keywords:"student technology support, programming help, lab preparation, viva support, TechZiouz"},
+ "/training": {title:"Technology Training Programs | TechZiouz",description:"Build practical skills in C, C++, Python, Java, SQL, Django, Git, GitHub and AI tools with TechZiouz training.",keywords:"Python training, C programming, Java training, SQL, Django, GitHub, AI tools, TechZiouz"},
+ "/projects": {title:"Student Project Guidance | TechZiouz",description:"Get guidance for project ideas, technology selection, development, debugging, documentation, presentations and viva preparation.",keywords:"student project guidance, final year project support, project documentation, TechZiouz"},
+ "/career": {title:"Career Preparation Support | TechZiouz",description:"Prepare for technology careers with resume, LinkedIn, GitHub portfolio, interview and placement preparation support.",keywords:"career preparation, ATS resume, technical interview, GitHub portfolio, TechZiouz"},
+ "/about": {title:"About TechZiouz | Technology Skills & Support",description:"Learn how TechZiouz helps students and graduates connect academic learning with practical technology skills and career readiness.",keywords:"about TechZiouz, technology skills, student support, career readiness"},
+ "/blog": {title:"Technology Learning & Career Insights | TechZiouz",description:"Read practical guidance on student support, programming, AI tools, career growth and technology skills from TechZiouz.",keywords:"technology learning blog, programming tips, student guidance, career growth, TechZiouz"},
+ "/contact": {title:"Contact TechZiouz | Get Technology Support",description:"Contact TechZiouz about student support, training, practical labs, project guidance, career preparation and digital solutions.",keywords:"contact TechZiouz, technology support, training enquiry, Kerala"},
+ "/programs": {title:"TechZiouz Programs | Training for Students & Graduates",description:"Explore technology programs for school students, college learners, graduates and job seekers, including coding, robotics, web development and career skills.",keywords:"technology programs, student coding, robotics, web development, career skills, TechZiouz"},
+ "/programs/kidziouz": {title:"Kidziouz by TechZiouz | Technology Learning for Young Minds",description:"Explore Kidziouz learning paths for digital literacy, coding, Scratch, Python, Arduino, robotics and creative technology projects.",keywords:"Kidziouz, technology learning for kids, coding, Scratch, Python, Arduino, robotics"}
+};
 const whatsappNumber="919446328258";
 function whatsappUrl(message){return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;}
+
+function RouteMetadata(){
+ const {pathname}=useLocation();
+ useEffect(()=>{
+  const service=services.find(item=>item.path===pathname);
+  const metadata=pageMetadata[pathname]||(service?{
+   title:`${service.title} | TechZiouz`,
+   description:`${service.text} Explore the support and learning options available from TechZiouz.`,
+   keywords:`${service.title}, technology support, training, TechZiouz`
+  }:{title:"TechZiouz | Your Trusted Technology Partner",description:pageMetadata["/"].description,keywords:pageMetadata["/"].keywords});
+  const canonicalPath=pathname==="/"?"/":pathname.replace(/\/+$/ ,"");
+  document.title=metadata.title;
+  const setMeta=(attribute,key,value)=>{
+   let element=document.head.querySelector(`meta[${attribute}="${key}"]`);
+   if(!element){element=document.createElement("meta");element.setAttribute(attribute,key);document.head.appendChild(element);}
+   element.setAttribute("content",value);
+  };
+  setMeta("name","description",metadata.description);
+  setMeta("name","keywords",metadata.keywords);
+  setMeta("name","robots","index, follow");
+  setMeta("property","og:title",metadata.title);
+  setMeta("property","og:description",metadata.description);
+  setMeta("property","og:type","website");
+  setMeta("property","og:url",`https://www.techziouz.com${canonicalPath}`);
+  setMeta("property","og:site_name","TechZiouz");
+  setMeta("property","og:image","https://www.techziouz.com/assets/techziouz-logo.png");
+  setMeta("name","twitter:card","summary");
+  setMeta("name","twitter:title",metadata.title);
+  setMeta("name","twitter:description",metadata.description);
+  setMeta("name","twitter:image","https://www.techziouz.com/assets/techziouz-logo.png");
+  let canonical=document.head.querySelector('link[rel="canonical"]');
+  if(!canonical){canonical=document.createElement("link");canonical.rel="canonical";document.head.appendChild(canonical);}
+  canonical.href=`https://www.techziouz.com${canonicalPath}`;
+ },[pathname]);
+ return null;
+}
 
 function Header(){
  const [open,setOpen]=useState(false);
@@ -35,7 +86,7 @@ function Footer(){
   <div><h4>Contact</h4><a href="mailto:techziouz@gmail.com">techziouz@gmail.com</a><a href="https://wa.me/919446328258" target="_blank">+91 9446328258</a><p>1st Floor ,KV Shopping Centre,near KV Steels,Arangottukara, Palakkad, Kerala, India - 679532</p></div>
  </div><div className="container copyright">© 2026 TechZiouz. Technology. Skills. Opportunities.</div></footer>
 }
-function Layout({children}){return <><Header/><main>{children}</main><a className="wa" href={whatsappUrl("Hello TechZiouz, I found you through the TechZiouz website and would like to enquire.")} target="_blank" rel="noreferrer" aria-label="Chat with TechZiouz on WhatsApp"><i className="fab fa-whatsapp"></i></a><Footer/></>}
+function Layout({children}){return <><RouteMetadata/><Header/><main>{children}</main><a className="wa" href={whatsappUrl("Hello TechZiouz, I found you through the TechZiouz website and would like to enquire.")} target="_blank" rel="noreferrer" aria-label="Chat with TechZiouz on WhatsApp"><i className="fab fa-whatsapp"></i></a><Footer/></>}
 
 function Hero(){
  return <section className="hero"><video className="heroVideo" autoPlay muted loop playsInline poster="/assets/techziouz-hero-poster.jpg"><source src="/assets/techziouz-hero.mp4" type="video/mp4"/></video><div className="heroShade"/><div className="container heroContent">
