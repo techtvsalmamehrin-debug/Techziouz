@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {createRoot} from "react-dom/client";
 import {BrowserRouter, Routes, Route, Link, NavLink, useLocation} from "react-router-dom";
 import "./styles.css";
+import {Programs, Kidziouz} from "./Programs.jsx";
 
 const services = [
  {path:"/services/student-support", title:"Student Technology Support", text:"Practical technical support throughout the academic journey.", items:["Programming","Lab Preparation","Viva Preparation","Doubt Clearing","Exam Support"]},
@@ -14,7 +15,7 @@ const services = [
 
 function Header(){
  const [open,setOpen]=useState(false);
- const nav=[["/","Home"],["/services","Services"],["/student-support","Student Support"],["/training","Training"],["/projects","Projects"],["/career","Career"],["/about","About"],["/blog","Blog"]];
+ const nav=[["/","Home"],["/services","Services"],["/programs","Programs"],["/student-support","Student Support"],["/training","Training"],["/projects","Projects"],["/career","Career"],["/about","About"],["/blog","Blog"]];
  return <header className="header"><div className="container nav">
    <Link to="/" className="brand"><img src="/assets/techziouz-logo.png" alt="TechZiouz"/></Link>
    <button className="menu" onClick={()=>setOpen(!open)} aria-label="Menu">☰</button>
@@ -27,7 +28,7 @@ function Footer(){
    <div><img className="footerLogo" src="/assets/techziouz-logo.png" alt="TechZiouz"/>
    <p>Your Trusted Technology Partner — practical technology skills, student support, project guidance, career readiness and selected AI & digital solutions.</p>
    <div className="social"><a href="mailto:techziouz@gmail.com" title="Email"><i className="fas fa-envelope"></i></a><a href="https://wa.me/919446328258" target="_blank" rel="noreferrer" title="WhatsApp Community"><i className="fab fa-whatsapp"></i></a><a href="https://www.linkedin.com/company/techziouz/" target="_blank" rel="noreferrer" title="LinkedIn"><i className="fab fa-linkedin"></i></a><a href="https://www.instagram.com/techziouz" target="_blank" rel="noreferrer" title="Instagram"><i className="fab fa-instagram"></i></a></div></div>
-   <div><h4>Quick Links</h4><Link to="/about">About</Link><Link to="/services">Services</Link><Link to="/student-support">Student Support</Link><Link to="/training">Training</Link><Link to="/projects">Projects</Link><Link to="/career">Career</Link><Link to="/contact">Contact</Link></div>
+  <div><h4>Quick Links</h4><Link to="/about">About</Link><Link to="/services">Services</Link><Link to="/programs">Programs</Link><Link to="/student-support">Student Support</Link><Link to="/training">Training</Link><Link to="/projects">Projects</Link><Link to="/career">Career</Link><Link to="/contact">Contact</Link></div>
    <div><h4>Our Services</h4>{services.slice(0,5).map(s=><Link key={s.path} to={s.path}>{s.title}</Link>)}</div>
   <div><h4>Contact</h4><a href="mailto:techziouz@gmail.com">techziouz@gmail.com</a><a href="https://wa.me/919446328258" target="_blank">+91 9446328258</a><p>1st Floor ,KV Shopping Centre,near KV Steels,Arangottukara, Palakkad, Kerala, India - 679532</p></div>
  </div><div className="container copyright">© 2026 TechZiouz. Technology. Skills. Opportunities.</div></footer>
@@ -109,6 +110,7 @@ function Contact(){return <StandardPage eyebrow="GET SUPPORT" title="Let's build
 function App(){
  return <Layout><Routes>
    <Route path="/" element={<Home/>}/><Route path="/services" element={<Services/>}/>
+  <Route path="/programs" element={<Programs/>}/><Route path="/programs/kidziouz" element={<Kidziouz/>}/>
    <Route path="/services/practical-labs" element={<PracticalLabs/>}/>
    {services.filter(s=>s.path!=="/services/practical-labs").map(s=><Route key={s.path} path={s.path} element={<Detail s={s}/>}/>)}
    <Route path="/student-support" element={<Generic eyebrow="STUDENT SUPPORT" title="Support for your academic technology journey." intro="Programming, lab, exam, supplementary and viva support designed around student needs." items={["Programming Support","Lab Preparation","Exam Preparation","Supplementary Exam Support","Viva Preparation","Doubt Clearing"]}/>}/>
