@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+.kidziouzHero,.kidziouzFeature,.kidziouzAreas,.kidziouzLevels,.kidziouzSafety{font-family:'Nunito',sans-serif}
+.kidziouzHero{overflow:hidden;background:linear-gradient(115deg,#fff2d1 0%,#effbf3 47%,#e8f2ff 100%)}
+.kidziouzHeroInner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);align-items:center;gap:36px}
+.kidziouzHeroCopy{max-width:690px}
+.kidziouzHero .kidziouzLabel,.kidziouzFeature .kidziouzLabel{display:inline-flex;flex-direction:column;gap:0;padding:9px 15px;border:1px solid #b9dfc6;border-radius:8px;background:rgba(255,255,255,.76);font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;line-height:1.1;letter-spacing:1px;color:#176c49}
+.kidziouzHero .kidziouzLabel span,.kidziouzFeature .kidziouzLabel span{margin-top:4px;font-size:9px;letter-spacing:1.5px;color:#547564}
+.kidziouzHero h1,.kidziouzFeature h2,.kidziouzLevels h2,.kidziouzAreas h2,.kidziouzSafety h2{font-family:'Baloo 2',sans-serif;font-weight:700;letter-spacing:0}
+.kidziouzHero h1{max-width:700px;margin:19px 0 12px;font-size:62px;line-height:.98;color:#14251d}
+.kidziouzHeroCopy>p{max-width:540px;font-size:17px;font-weight:600;line-height:1.65;color:#486355}
+.kidziouzHero .kidziouzButton,.kidziouzFeature .kidziouzButton{min-height:49px;padding:13px 19px;border-radius:7px;box-shadow:0 5px 0 #0c603d;font-family:'Nunito',sans-serif;font-size:14px;transition:transform .16s,box-shadow .16s}
+.kidziouzHero .kidziouzButton:hover,.kidziouzFeature .kidziouzButton:hover{transform:translateY(2px);box-shadow:0 3px 0 #0c603d}
+.kidziouzHeroMarks{gap:18px;margin-top:35px;padding-top:14px;border-color:#bfdac8}
+.kidziouzHeroMarks span{font-family:'Nunito',sans-serif;font-size:10px;letter-spacing:1.2px;color:#347454}
+.kidziouzHeroArt{position:relative;display:grid;place-items:center;min-height:360px;isolation:isolate}
+.kidziouzHeroArtGrid{position:absolute;inset:24px 8px 20px;background-image:linear-gradient(rgba(34,111,74,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(34,111,74,.08) 1px,transparent 1px);background-size:24px 24px;mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent);z-index:-1}
+.kidziouzHeroRobot{display:grid;place-items:center;width:236px;aspect-ratio:1;border:9px solid #fff;border-radius:35% 35% 30% 30%;background:#9be3b7;color:#176c49;font-size:112px;box-shadow:0 18px 0 rgba(23,108,73,.13);transform:rotate(-4deg)}
+.kidziouzHeroSticker{position:absolute;display:flex;align-items:center;gap:8px;padding:10px 13px;border:2px solid #fff;border-radius:7px;font-family:'Nunito',sans-serif;font-size:11px;font-weight:900;letter-spacing:.6px;box-shadow:0 5px 0 rgba(17,18,20,.12)}
+.kidziouzStickerCode{top:44px;left:2px;background:#d9edff;color:#235b93;transform:rotate(-5deg)}
+.kidziouzStickerBuild{right:0;bottom:49px;background:#ffe08a;color:#664800;transform:rotate(4deg)}
+.kidziouzStickerIdeas{top:69px;right:2px;background:#ffd9d5;color:#9b3831;transform:rotate(5deg)}
+.kidziouzFeature{position:relative;overflow:hidden;padding:62px 0;background:#e4f7eb;color:#172b22}
+.kidziouzFeatureInner{display:grid;grid-template-columns:minmax(0,1fr) 235px;align-items:center;gap:35px}
+.kidziouzFeatureCopy{max-width:720px}
+.kidziouzFeature h2{max-width:650px;margin:15px 0 8px;font-size:46px;line-height:1.02;color:#173c2a}
+.kidziouzFeature p{font-size:15px;line-height:1.65;color:#426050}
+.kidziouzPills{gap:8px;margin-top:17px}
+.kidziouzPills span{padding:7px 11px;border:1px solid #b6ddc8;border-radius:5px;background:#f8fffa;font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;color:#2c6848}
+.kidziouzFeature .kidziouzButton{margin-top:20px}
+.kidziouzFeatureArt{position:relative;display:grid;place-items:center;min-height:190px}
+.kidziouzFeatureRobot{display:grid;place-items:center;width:142px;aspect-ratio:1;border:7px solid #fff;border-radius:30%;background:#b7eaff;color:#286493;font-size:68px;transform:rotate(5deg)}
+.kidziouzFeatureSpark{position:absolute;display:grid;place-items:center;width:40px;aspect-ratio:1;border:2px solid #fff;border-radius:8px;font-size:17px;box-shadow:0 4px 0 rgba(17,18,20,.1)}
+.kidziouzFeatureSparkOne{top:2px;right:28px;background:#ffe08a;color:#825b00;transform:rotate(8deg)}
+.kidziouzFeatureSparkTwo{bottom:1px;left:20px;background:#ffd9d5;color:#a24338;transform:rotate(-8deg)}
+.kidziouzFeatureCode{position:absolute;right:0;bottom:10px;padding:6px 9px;border-radius:4px;background:#173c2a;color:#fff;font-family:monospace;font-size:10px}
+.kidziouzAreas h2,.kidziouzLevels h2{margin:0 0 8px;font-size:42px;line-height:1.05;color:#193b2a}
+.kidziouzAreas .eyebrow,.kidziouzLevels .eyebrow,.kidziouzSafety .eyebrow{font-family:'Nunito',sans-serif;letter-spacing:1.5px}
+.kidziouzAreaGrid>div{position:relative;background:#fff}
+.kidziouzAreaGrid>div:nth-child(4n+1){box-shadow:inset 0 3px #60bc83}
+.kidziouzAreaGrid>div:nth-child(4n+2){box-shadow:inset 0 3px #65aee0}
+.kidziouzAreaGrid>div:nth-child(4n+3){box-shadow:inset 0 3px #f0c347}
+.kidziouzAreaGrid>div:nth-child(4n){box-shadow:inset 0 3px #e9897e}
+.kidziouzAreaGrid h3,.kidziouzLevel h3{font-family:'Baloo 2',sans-serif;font-weight:700;letter-spacing:0}
+.kidziouzLevel{border-radius:7px;border-top:4px solid #69bd88;box-shadow:0 4px 12px rgba(23,60,42,.05)}
+.kidziouzLevel:nth-child(2){border-top-color:#68aee0}
+.kidziouzLevel:nth-child(3){border-top-color:#f0c347}
+.kidziouzLevel>span{font-family:'Nunito',sans-serif;letter-spacing:1.2px}
+.kidziouzLevel h3{font-size:24px;color:#193b2a}
+.kidziouzLevel li{font-family:'Nunito',sans-serif;font-size:12px}
+.kidziouzSafety{background:#173c2a}
+.kidziouzSafety h2{font-size:40px;line-height:1.08;color:#f4fff7}
+.kidziouzSafety p{font-size:15px;line-height:1.7;color:#d9efe1}
+@media(max-width:900px){.kidziouzHeroInner{grid-template-columns:1fr;gap:10px}.kidziouzHeroCopy{max-width:760px}.kidziouzHeroArt{min-height:285px}.kidziouzHeroArtGrid{inset:15px 10%}.kidziouzHeroRobot{width:190px;font-size:90px}.kidziouzStickerCode{left:18%}.kidziouzStickerIdeas{right:17%}.kidziouzStickerBuild{right:19%;bottom:28px}.kidziouzFeatureInner{grid-template-columns:minmax(0,1fr) 190px}.kidziouzFeatureArt{min-height:165px}.kidziouzFeatureRobot{width:125px;font-size:58px}}
+@media(max-width:600px){.kidziouzHero{padding-top:142px;padding-bottom:38px}.kidziouzHeroInner{gap:0}.kidziouzHero h1{font-size:43px;line-height:1.02}.kidziouzHeroCopy>p{font-size:15px}.kidziouzHero .kidziouzButton{width:100%}.kidziouzHeroMarks{justify-content:space-between;gap:8px;margin-top:25px}.kidziouzHeroMarks span{font-size:9px}.kidziouzHeroArt{min-height:235px;margin-top:10px}.kidziouzHeroRobot{width:158px;border-width:7px;font-size:74px}.kidziouzHeroArtGrid{inset:14px 4%}.kidziouzStickerCode{top:30px;left:4%}.kidziouzStickerIdeas{top:45px;right:1%}.kidziouzStickerBuild{right:3%;bottom:22px}.kidziouzFeature{padding:43px 0}.kidziouzFeatureInner{grid-template-columns:1fr;gap:5px}.kidziouzFeature h2{font-size:35px}.kidziouzFeature p{font-size:14px}.kidziouzPills span{font-size:10px}.kidziouzFeature .kidziouzButton{width:100%}.kidziouzFeatureArt{min-height:145px}.kidziouzFeatureRobot{width:108px;font-size:51px}.kidziouzFeatureCode{right:8%;bottom:0}.kidziouzAreas h2,.kidziouzLevels h2{font-size:34px}.kidziouzLevel{padding:21px}.kidziouzLevel h3{font-size:23px}.kidziouzSafety h2{font-size:33px}.kidziouzSafety p{font-size:14px}}
