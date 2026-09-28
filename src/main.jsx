@@ -158,7 +158,40 @@ function BlogPage(){
   </>
  );
 }
-function Contact(){return <StandardPage eyebrow="GET SUPPORT" title="Let's build your next step." intro="Tell us what you need help with and connect with TechZiouz."><section className="section"><div className="container contactGrid"><div><h2>Contact TechZiouz</h2><p>Email: <a href="mailto:techziouz@gmail.com">techziouz@gmail.com</a></p><p>Phone / WhatsApp: <a href={whatsappUrl("Hello TechZiouz, I found you through your website and would like to connect.")} target="_blank" rel="noreferrer">+91 9446328258</a></p><p>KV Shopping Centre, Arangottukara, Arangottukara (PO), Palakkad, Kerala, India - 679532</p><p><a href={whatsappUrl("Hello TechZiouz, I found you through your website and would like to enquire.")} target="_blank" rel="noreferrer">Chat on WhatsApp →</a></p></div><form onSubmit={e=>{e.preventDefault();const formData=new FormData(e.currentTarget);const details={name:formData.get("name"),email:formData.get("email"),phone:formData.get("phone"),interest:formData.get("interest"),requirement:formData.get("requirement")};const message=["Hello TechZiouz, I found you through the TechZiouz website and would like to enquire.","",`Name: ${details.name}`,`Email: ${details.email}`,`Phone / WhatsApp: ${details.phone}`,`Interested in: ${details.interest}`,`Requirement: ${details.requirement||"Not provided"}`].join("\n");window.open(whatsappUrl(message),"_blank","noopener,noreferrer")}}><input name="name" placeholder="Full Name" autoComplete="name" required/><input name="email" type="email" placeholder="Email" autoComplete="email" required/><input name="phone" type="tel" placeholder="Phone / WhatsApp" autoComplete="tel" required/><select name="interest"><option>Student Support</option><option>Training</option><option>Practical Lab</option><option>Project Support</option><option>Career Support</option><option>AI & Digital Solutions</option></select><textarea name="requirement" placeholder="Tell us about your requirement"></textarea><button className="btn red" type="submit">Submit Enquiry</button></form></div></section></StandardPage>}
+function Contact(){
+ return <StandardPage eyebrow="GET SUPPORT" title="Let's build your next step." intro="Tell us what you need help with and connect with TechZiouz.">
+  <section className="section"><div className="container contactGrid">
+   <div><h2>Contact TechZiouz</h2><p>Email: <a href="mailto:techziouz@gmail.com">techziouz@gmail.com</a></p><p>Phone / WhatsApp: <a href={whatsappUrl("Hello TechZiouz, I found you through your website and would like to connect.")} target="_blank" rel="noreferrer">+91 9446328258</a></p><p>KV Shopping Centre, Arangottukara, Arangottukara (PO), Palakkad, Kerala, India - 679532</p><p><a href={whatsappUrl("Hello TechZiouz, I found you through your website and would like to enquire.")} target="_blank" rel="noreferrer">Chat on WhatsApp →</a></p></div>
+   <form onSubmit={e=>{e.preventDefault();const formData=new FormData(e.currentTarget);const details={name:formData.get("name"),email:formData.get("email"),phone:formData.get("phone"),interest:formData.get("interest"),requirement:formData.get("requirement")};const message=["Hello TechZiouz, I found you through the TechZiouz website and would like to enquire.","",`Name: ${details.name}`,`Email: ${details.email}`,`Phone / WhatsApp: ${details.phone}`,`Interested in: ${details.interest}`,`Requirement: ${details.requirement||"Not provided"}`].join("\n");window.open(whatsappUrl(message),"_blank","noopener,noreferrer")}}>
+    <input name="name" placeholder="Full Name" autoComplete="name" required/>
+    <input name="email" type="email" placeholder="Email" autoComplete="email" required/>
+    <input name="phone" type="tel" placeholder="Phone / WhatsApp" autoComplete="tel" required/>
+    <select name="interest" required>
+     <option value="" disabled>Select a program or service</option>
+     <optgroup label="Programs">
+      <option>General Programs Enquiry</option>
+      <option>Junior Tech Explorers</option>
+      <option>Teen Tech Skills Program</option>
+      <option>Vacation Tech Camp</option>
+      <option>College Tech Programs</option>
+      <option>Career Skill Programs</option>
+      <option>Kidziouz</option>
+     </optgroup>
+     <optgroup label="Services">
+      <option>Student Support</option>
+      <option>Training</option>
+      <option>Practical Lab</option>
+      <option>Project Support</option>
+      <option>Career Support</option>
+      <option>AI & Digital Solutions</option>
+     </optgroup>
+    </select>
+    <textarea name="requirement" placeholder="Tell us about your requirement"></textarea>
+    <button className="btn red" type="submit">Submit Enquiry</button>
+   </form>
+  </div></section>
+ </StandardPage>;
+}
 
 function App(){
  return <Layout><Routes>
